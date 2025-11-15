@@ -1,1 +1,449 @@
 
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pansilu Enterprises</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #2e5c4a;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+
+        header .logo {
+            font-size: 2em;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            margin-right: 20px;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #b7d1c1;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #3b7b64;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1600x600/3b7b64/ffffff?text=Pansilu+Enterprises+-+Timber+Products') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background-color: #e09f3e;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #c07a1b;
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 0;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2e5c4a;
+        }
+
+        .section-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .feature-item, .product-item {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover, .product-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item i {
+            font-size: 3em;
+            color: #e09f3e;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h3, .product-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #3b7b64;
+        }
+
+        .feature-item p, .product-item p {
+            font-size: 1em;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2e5c4a;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button {
+            background-color: #e09f3e;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .contact-form button:hover {
+            background-color: #c07a1b;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2e5c4a;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 5px solid #e09f3e;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px;
+            }
+
+            header .logo {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                margin-right: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            header nav ul li {
+                margin: 5px 0;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .section h2 {
+                font-size: 2em;
+            }
+
+            .section-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-item, .product-item {
+                max-width: 90%;
+            }
+        }
+
+        /* Font Awesome for Icons (for demonstration, a placeholder will be used if not linked externally) */
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.125em;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            fill: currentColor;
+        }
+        .icon-check-circle {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM227.3 361.3L150.7 284.7c-4.7-4.7-4.7-12.3 0-17l7.3-7.3c4.7-4.7 12.3-4.7 17 0l55.3 55.3 122.7-122.7c4.7-4.7 12.3-4.7 17 0l7.3 7.3c4.7 4.7 4.7 12.3 0 17L244.3 361.3c-4.7 4.7-12.3 4.7-17 0z"/></svg>');
+        }
+        .icon-star {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 34.6-17.7 53.6l105.7 103-25 145.5c-4.5 26.3 23.2 46.8 46.4 34.5L288 439.6l129.8 68.3c23.2 12.2 50.9-8.3 46.4-34.5l-25-145.5 105.7-103c19-19 8.5-49.8-17.7-53.6L382 150.2 316.7 17.8c-11.7-22.6-45.7-22.6-57.4 0z"/></svg>');
+        }
+        .icon-truck {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M105.7 137.4c12.2-5.7 27.2-2.3 34.2 8.5L224 219.7c22.7 34.2 32 75.8 29.5 119.3L190.5 448h245c13.7 0 25-10.3 25-23.7V256H416c-13.7 0-25-10.3-25-23.7V192c0-13.7 11.3-23.7 25-23.7h128V64c0-13.7 11.3-23.7 25-23.7h32c13.7 0 25 10.3 25 23.7v384c0 13.7-11.3 23.7-25 23.7H416c-13.7 0-25-10.3-25-23.7V416H190.5c-11.7 0-22.3-5.3-28.8-14.7l-49.7-72.3c-15.7-22.7-23.8-49.7-23.8-78.3V160c0-13.7 11.3-23.7 25-23.7h48c13.7 0 25 10.3 25 23.7v64c0 13.7-11.3 23.7-25 23.7h-48c-13.7 0-25-10.3-25-23.7V160c0-13.7 11.3-23.7 25-23.7h48zM576 416V128H416v288h160z"/></svg>');
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Pansilu Enterprises</div>
+        <nav>
+            <ul>
+                <li><a href="#about">අප ගැන</a></li>
+                <li><a href="#products">නිෂ්පාදන</a></li>
+                <li><a href="#contact">අප අමතන්න</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>ඔබගේ සිහින නිවහනට, කාර්යාලයට අවශ්‍ය දැව නිෂ්පාදන සහ උසස් තත්ත්වයේ සේවා සපයන්නෝ</h1>
+                <p>සියළුම වර්ගයේ ප්ලයිවුඩ් බෝඩ් අලෙවි කරන්නෝ. ඔබට අවශ්‍ය සියලුම වර්ගයේ දැව වර්ග, උළුවහු, දොර ජනෙල් සහ පැන්ට්‍රි කබඩ් සදන්නෝ.</p>
+                <a href="#products" class="btn">අපගේ නිෂ්පාදන බලන්න</a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2>අප ගැන</h2>
+                <div class="section-content">
+                    <div class="feature-item">
+                        <i class="icon icon-check-circle"></i>
+                        <h3>විශ්වාසනීයත්වය සහ ගුණාත්මකභාවය</h3>
+                        <p>වසර ගණනාවක පලපුරුද්දක් සමඟින්, අපි පාරිභෝගික තෘප්තිය ඉහළින්ම තබා ගනිමින් විශිෂ්ට ගුණාත්මක භාවයකින් යුත් නිෂ්පාදන ලබා දීමට කැපවී සිටිමු.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="icon icon-star"></i>
+                        <h3>පුළුල් පරාසයක නිෂ්පාදන</h3>
+                        <p>සියළුම වර්ගයේ දැව නිෂ්පාදන, උළුවහු, දොර ජනෙල් සහ පැන්ට්‍රි කබඩ් අප සතුව ඇත. ඔබට අවශ්‍ය ඕනෑම දැව වර්ගයක්, ඔබේ රුචිකත්වය පරිදි සකස් කර දීමට අපි සූදානම්.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="icon icon-truck"></i>
+                        <h3>මිල අඩු කිරීම් සහ බෙදා හැරීම</h3>
+                        <p>සියළුම ප්ලයිවුඩ් බෝඩ් සහ දොරවල් අඩු මිලට විකිනීමට ඇත. ඔබේ අවශ්‍යතාවය පරිදි බෙදා හැරීමේ පහසුකම් ද ඇත.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="section">
+            <div class="container">
+                <h2>අපගේ නිෂ්පාදන</h2>
+                <div class="section-content">
+                    <div class="product-item">
+                        <img src="https://via.placeholder.com/300x200?text=දොරවල්" alt="දොරවල්">
+                        <h3>දොරවල්</h3>
+                        <p>විවිධ මෝස්තරවලින් සහ ප්‍රමාණවලින් උසස් තත්ත්වයේ දොරවල්.</p>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://via.placeholder.com/300x200?text=උළුවහු" alt="උළුවහු">
+                        <h3>උළුවහු</h3>
+                        <p>ඕනෑම ගොඩනැගිල්ලකට ගැලපෙන පරිදි ශක්තිමත් උළුවහු.</p>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://via.placeholder.com/300x200?text=ජනෙල්" alt="ජනෙල්">
+                        <h3>ජනෙල්</h3>
+                        <p>අලංකාර සහ කල් පවතින ජනෙල් ඔබේ නිවහනට අලංකාරයක් එක් කරයි.</p>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://via.placeholder.com/300x200?text=ප්ලයිවුඩ්+බෝඩ්" alt="ප්ලයිවුඩ් බෝඩ්">
+                        <h3>ප්ලයිවුඩ් බෝඩ්</h3>
+                        <p>සියළුම වර්ගයේ ප්ලයිවුඩ් බෝඩ් අඩුම මිලට.</p>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://via.placeholder.com/300x200?text=පැන්ට්‍රි+කබඩ්" alt="පැන්ට්‍රි කබඩ්">
+                        <h3>පැන්ට්‍රි කබඩ්</h3>
+                        <p>ඔබේ මුළුතැන්ගෙය සඳහා නවීන සහ ප්‍රයෝජනවත් පැන්ට්‍රි කබඩ්.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>අප අමතන්න</h2>
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <label for="name">නම:</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">විද්‍යුත් තැපෑල:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="message">පණිවිඩය:</label>
+                        <textarea id="message" name="message" required></textarea>
+
+                        <button type="submit">පණිවිඩය යවන්න</button>
+                    </form>
+                </div>
+                <p style="text-align: center; margin-top: 30px; font-size: 1.1em;">
+                    **අපගේ ලිපිනය:** අංක 181/1 (492) හයිලෙවල් පාර, පන්නිපිටිය.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Pansilu Enterprises. සියළු හිමිකම් ඇවිරිණි.</p>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Basic responsive menu toggle (if needed, not fully implemented for a simple nav)
+        // You would typically add a hamburger icon for mobile view
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle'); // Assume a toggle button exists
+            const navMenu = document.querySelector('header nav ul');
+
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active'); // Add/remove 'active' class to show/hide menu
+                });
+            }
+        });
+    </script>
+</body>
+</html>
